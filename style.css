@@ -1,0 +1,54 @@
+#cards {
+  /* flexbox 是軸的概念 預設是 row 的*/
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
+.card {
+  /*卡片在容器裡的排版 / 卡片在容器裡佔多大的比例 需求是呈現 4排 每排 13 張 / 身為 flex item 的設定*/
+  flex: 7% 0 1;
+  /*每張卡片（每個item）分配容器的寬度。
+                   flex 其實是 3 個 properties 
+                   1. flex-basis畫面中比例 
+                   2. flex-grow 空間夠（如果還有剩餘空間會不會吃掉  0 代表不會分配剩餘空間
+                   3. flex-shrink 空間不夠時會不會收縮（與 grow 相反）1 代表 它會和其他所有數字是 1 的item 平均分配空間
+                   ** 0 和 1 不是 開關 是 加權數*/
+  height: 8vw;
+  /*依照視窗的寬度等比例變化
+                 100% 就是完整的視窗大小
+                 視窗大小被改變時，高度希望可以改變所以照著8% 的視窗大小跟著改變*/
+  border: 2px solid #e0e0e0;
+
+
+  /*卡片內部元素的排版*/
+  display: flex;
+  flex-direction: column;
+  /*本來預設是row，用 flex- direction  column把它變直的*/
+  justify-content: space-around;
+  margin: 2px; /*卡片邊距*/
+  box-sizing: border-box; /*設定 box-sizing*/
+}
+
+.card img {
+  max-width: 30%;
+  align-self: center;
+}
+
+.card p {
+  margin: 3px;
+  font-size: 10px;
+}
+
+.card p:last-child {
+  transform: rotate(180deg);
+}
+
+.back {
+  background: url('https://assets-lighthouse.alphacamp.co/uploads/image/file/9222/ExportedContentImage_00.png');
+  background-size: cover;
+}
+
+.paired {
+  background-color: #dae0e3;
+}
