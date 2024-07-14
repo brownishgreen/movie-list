@@ -6,6 +6,8 @@ app.get('/', (req, res) => {
   res.redirect('/movies')
 })
 
+app.use(express.static('public'))
+
 
 app.get('/movies', (req, res) => {
   res.send('Listing movies')
