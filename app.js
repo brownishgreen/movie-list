@@ -1,16 +1,24 @@
 const express = require('express')
+const { engine } = require('express-handlebars')
 const app = express()
 const port = 3000
+
+//tell express 把樣板引擎交給express-handlebars
+app.engine('.hbs',engine({extname: '.hbs'}))
+app.set('view engine', '.hbs')
+app.set('views', './views')
+//載入靜態json
+app.use(express.static('public'))
 
 app.get('/', (req, res) => {
   res.redirect('/movies')
 })
 
-app.use(express.static('public'))
+
 
 
 app.get('/movies', (req, res) => {
-  res.send('Listing movies')
+  res.render('index')
 })
 
 app.get('/movies/:id', (req, res) => {
