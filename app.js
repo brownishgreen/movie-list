@@ -24,9 +24,10 @@ app.get('/movies', (req, res) => {
   res.render('index', { movies, BASE_IMG_URL }) //{ movies, BASE_IMG_URL } 是一個物件，表示將這些變數傳遞給 index 模板
 })
 
-app.get('/movies/:id', (req, res) => {
+app.get('/movie/:id', (req, res) => {
   const id = req.params.id
-  res.send(`This is movie ${id}`)
+  const movie = movies.find((mv) => mv.id.toString() === id)
+  res.render('detail', { movie, BASE_IMG_URL })
 })
 
 app.listen( port, (req, res) => {
